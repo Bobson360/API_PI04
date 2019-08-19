@@ -4,7 +4,6 @@ package com.robson.cursomc.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.robson.cursomc.domain.enums.EstadoPagamento;
