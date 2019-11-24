@@ -68,14 +68,14 @@ public class CursomcApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Banho b1 = new Banho(null, "Robson", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
-		Banho b2 = new Banho(null, "Barbara", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
-		Banho b3 = new Banho(null, "Elson", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
-		Banho b4 = new Banho(null, "Ingrid", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
-		Banho b5 = new Banho(null, "Pedro", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
+//		Banho b1 = new Banho(null, "Robson", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
+//		Banho b2 = new Banho(null, "Barbara", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
+//		Banho b3 = new Banho(null, "Elson", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
+//		Banho b4 = new Banho(null, "Ingrid", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
+//		Banho b5 = new Banho(null, "Pedro", 5460.65, 54.6, 28.5, 22.1, 36.2, "22/10/2019 - 15:32:22", "22/10/2019 - 15:39:22");
 
 		
-		banhoRepository.saveAll(Arrays.asList(b1,b2,b3,b4,b5));
+//		banhoRepository.saveAll(Arrays.asList(b1,b2,b3,b4,b5));
 		
 //		Categoria cat1 = new Categoria(null, "Informatica");
 //		Categoria cat2 = new Categoria(null, "Escritorio");
