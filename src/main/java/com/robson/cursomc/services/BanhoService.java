@@ -10,30 +10,30 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.robson.cursomc.domain.Cliente;
-import com.robson.cursomc.dto.ClienteDTO;
-import com.robson.cursomc.repositories.ClienteRepository;
+import com.robson.cursomc.domain.Banho;
+import com.robson.cursomc.dto.BanhoDTO;
+import com.robson.cursomc.repositories.BanhoRepository;
 import com.robson.cursomc.services.exeptions.DataIntegrityException;
 import com.robson.cursomc.services.exeptions.ObjectNotFoundException;
 
 @Service
-public class ClienteService {
+public class BanhoService {
 	
 	@Autowired
-	private ClienteRepository repo;
+	private BanhoRepository repo;
 	 
-	public Cliente find(Integer id) {
-		Optional<Cliente> obj = repo.findById(id);
+	public Banho find(Integer id) {
+		Optional<Banho> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Banho.class.getName()));
 	}
 	
-	public Cliente insert(Cliente obj) {
+	public Banho insert(Banho obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
 	
-	public Cliente update(Cliente obj) {
+	public Banho update(Banho obj) {
 		find(obj.getId());
 		return repo.save(obj);
 	}
@@ -48,16 +48,27 @@ public class ClienteService {
 		}
 	}
 	
-	public List<Cliente> findAll(){
+	public List<Banho> findAll(){
 		return repo.findAll();
 	}
 	
-	public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
+	public Page<Banho> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
 	
-	public Cliente fromDTO(ClienteDTO objDTO) {
-		return new Cliente(objDTO.getId(), objDTO.getNome(), objDTO.getEmail(), null, null);
+	public Banho fromDTO(BanhoDTO objDTO) {
+		return new Banho(
+				objDTO.getId(), 
+				objDTO.getUser(), 
+				objDTO.getEnergia(), 
+				objDTO.getAgua(), 
+				objDTO.getTempAmbiente(), 
+				objDTO.getTempInAgua(), 
+				objDTO.getTempOutAgua(), 
+				objDTO.getInicio(), 
+				objDTO.getFim());
+		
+//		return new Banho(objDTO.getId(), objDTO.getNome(), objDTO.getEmail(), null, null);
 	}
 }

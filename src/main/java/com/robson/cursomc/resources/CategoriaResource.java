@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.robson.cursomc.domain.Categoria;
+import com.robson.cursomc.domain.User;
 import com.robson.cursomc.dto.CategoriaDTO;
 import com.robson.cursomc.services.CategoriaService;
 
@@ -29,15 +29,15 @@ public class CategoriaResource {
 	private CategoriaService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Categoria> find(@PathVariable Integer id) {
-		Categoria obj = service.find(id);
+	public ResponseEntity<User> find(@PathVariable Integer id) {
+		User obj = service.find(id);
 		
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody CategoriaDTO objDTO){
-		Categoria obj = service.fromDTO(objDTO);
+		User obj = service.fromDTO(objDTO);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(objDTO.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -45,7 +45,7 @@ public class CategoriaResource {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody CategoriaDTO objDTO, @PathVariable Integer id){
-		Categoria obj = service.fromDTO(objDTO);
+		User obj = service.fromDTO(objDTO);
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
@@ -59,7 +59,7 @@ public class CategoriaResource {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<CategoriaDTO>> findAll() {
-		List<Categoria> list = service.findAll();
+		List<User> list = service.findAll();
 		List<CategoriaDTO> listDTO = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);
 	}
@@ -70,7 +70,7 @@ public class CategoriaResource {
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage, 
 			@RequestParam(value = "orderBy", defaultValue = "nome")String orderBy, 
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction) {
-		Page<Categoria> list = service.findPage(page, linesPerPage, orderBy, direction);
+		Page<User> list = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<CategoriaDTO> listDTO = list.map(obj -> new CategoriaDTO(obj));
 		return ResponseEntity.ok().body(listDTO);
 	}

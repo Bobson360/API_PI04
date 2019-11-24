@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.robson.cursomc.domain.Categoria;
+import com.robson.cursomc.domain.User;
 
 public class CategoriaDTO implements Serializable {
 	
@@ -22,7 +22,7 @@ public class CategoriaDTO implements Serializable {
 		
 	}
 	
-	public CategoriaDTO(Categoria obj) {
+	public CategoriaDTO(User obj) {
 		id = obj.getId();
 		nome = obj.getNome();
 	}
