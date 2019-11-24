@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import com.robson.cursomc.domain.Banho;
 import com.robson.cursomc.dto.BanhoDTO;
 import com.robson.cursomc.services.BanhoService;
 
+
 @RestController
 @RequestMapping(value="/banho")
 public class BanhoResource {
@@ -28,6 +30,7 @@ public class BanhoResource {
 	@Autowired
 	private BanhoService service;
 	
+	 @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Banho> find(@PathVariable Integer id) {
 		Banho obj = service.find(id);
