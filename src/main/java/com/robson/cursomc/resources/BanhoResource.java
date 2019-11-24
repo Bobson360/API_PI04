@@ -30,13 +30,14 @@ public class BanhoResource {
 	@Autowired
 	private BanhoService service;
 	
-	 @CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Banho> find(@PathVariable Integer id) {
 		Banho obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Banho obj){
 		obj = service.insert(obj);
